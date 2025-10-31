@@ -1,0 +1,1 @@
+docker compose up --build si es la primera vez que se ejecuta

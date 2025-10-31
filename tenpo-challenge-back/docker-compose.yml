@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  tenpo-db:
+    container_name: tenpo-database
+    image: postgres:16.2
+    restart: always
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=tenpo
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d tenpo"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  tenpo-ms:
+    depends_on:
+      tenpo-db:
+        condition: service_healthy
+        restart: true
+    build: ./
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/usr/src/app/src
+    command: npm run start:dev
+    environment:
+      - PORT=${PORT}
+      - DATABASE_URL=postgresql://postgres:123456@tenpo-db:5432/tenpo?schema=public
+      - JWT_SECRET=${JWT_SECRET}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - NODE_ENV=${NODE_ENV}
