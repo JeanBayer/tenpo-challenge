@@ -5,10 +5,12 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export const publicApi = axios.create({
   baseURL: API_URL,
+  withCredentials: true,
 });
 
 const privateApi = axios.create({
   baseURL: API_URL,
+  withCredentials: true,
 });
 
 privateApi.interceptors.request.use((config) => {
