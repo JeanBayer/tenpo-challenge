@@ -1,5 +1,12 @@
-import { withRouter } from "./with-router";
-import { withTanStackQuery } from "./with-tanstack-query";
+import type { PropsWithChildren } from "react";
+import { WithRouter } from "./with-router";
+import { WithTanStackQuery } from "./with-tanstack-query";
 
-export const withProviders = (component: () => React.ReactNode) =>
-  withTanStackQuery(withRouter(component));
+export const WithProviders = ({ children }: PropsWithChildren) => {
+  return (
+    <WithTanStackQuery>
+      {children}
+      <WithRouter />
+    </WithTanStackQuery>
+  );
+};

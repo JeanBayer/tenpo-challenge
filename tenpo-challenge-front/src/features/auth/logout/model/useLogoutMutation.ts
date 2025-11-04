@@ -13,7 +13,9 @@ export const useLogoutMutation = () => {
     onSuccess: () => {
       logout();
       queryClient.invalidateQueries();
-      navigate("/login");
+      navigate("/login", {
+        replace: true,
+      });
     },
   });
 

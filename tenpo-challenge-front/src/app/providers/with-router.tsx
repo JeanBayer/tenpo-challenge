@@ -1,4 +1,5 @@
 import MainLayout from "@/pages/layout/MainLayout";
+import { ProtectedRoute } from "@/pages/layout/ProtectedRoute";
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <MainLayout />,
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,
@@ -30,5 +35,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const withRouter = (component: () => React.ReactNode) => () =>
-  <RouterProvider router={router} />;
+export const WithRouter = () => <RouterProvider router={router} />;
