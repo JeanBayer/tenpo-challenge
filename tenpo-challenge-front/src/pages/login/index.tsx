@@ -1,41 +1,12 @@
-import { useAuthStore } from "@/entities/user/model/auth.store";
-import { publicApi } from "@/shared/api/axios";
-import { Link, useNavigate } from "react-router";
-
-export interface ResponseT {
-  user: User;
-  accessToken: string;
-}
-
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-}
+import { LoginForm } from "@features/auth/by-credentials/ui/LoginForm";
 
 export default function LoginPage() {
-  const login = useAuthStore((state) => state.login);
-  const navigate = useNavigate();
-
-  const handleLogin = async () => {
-    try {
-      const { data } = await publicApi.post<ResponseT>("/auth/login", {
-        email: "test@test.com",
-        password: "123",
-      });
-      const { user, accessToken } = data;
-      login(user, accessToken);
-      navigate("/");
-    } catch (error) {
-      console.error("Login failed", error);
-    }
-  };
-
   return (
-    <div>
-      LoginPage
-      <Link to="/">Go to Dashboard</Link>
-      <button onClick={handleLogin}>Login</button>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="p-8 bg-white rounded-lg shadow-md w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
+        <LoginForm />
+      </div>
     </div>
   );
 }
