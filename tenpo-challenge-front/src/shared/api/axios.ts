@@ -38,6 +38,7 @@ privateApi.interceptors.response.use(
         return privateApi(originalRequest);
       } catch (refreshError) {
         useAuthStore.getState().logout();
+        window.location.href = "/login";
         return Promise.reject(refreshError);
       }
     }

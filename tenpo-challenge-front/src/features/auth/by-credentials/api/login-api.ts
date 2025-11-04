@@ -10,7 +10,3 @@ export const loginRequest = async (
   );
   return data;
 };
-
-export const logoutRequest = async (): Promise<void> => {
-  await publicApi.post("/auth/logout");
-};

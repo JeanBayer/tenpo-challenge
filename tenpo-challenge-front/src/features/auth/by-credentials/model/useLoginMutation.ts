@@ -1,13 +1,12 @@
 import { useAuthStore } from "@entities/user/model/auth.store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
-import { loginRequest, logoutRequest } from "../api/auth-api";
+import { loginRequest } from "../api/login-api";
 
-export const useAuthMutation = () => {
+export const useLoginMutation = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const login = useAuthStore((state) => state.login);
-  const logout = useAuthStore((state) => state.logout);
 
   const loginMutation = useMutation({
     mutationFn: loginRequest,
@@ -21,15 +20,6 @@ export const useAuthMutation = () => {
     },
   });
 
-  const logoutMutation = useMutation({
-    mutationFn: logoutRequest,
-    onSuccess: () => {
-      logout();
-      queryClient.invalidateQueries();
-      navigate("/login");
-    },
-  });
-
   return {
     login: {
       mutate: loginMutation.mutate,
@@ -37,13 +27,6 @@ export const useAuthMutation = () => {
       isError: loginMutation.isError,
       isSuccess: loginMutation.isSuccess,
       error: loginMutation.error,
-    },
-    logout: {
-      mutate: logoutMutation.mutate,
-      isPending: logoutMutation.isPending,
-      isError: logoutMutation.isError,
-      isSuccess: logoutMutation.isSuccess,
-      error: logoutMutation.error,
     },
   };
 };

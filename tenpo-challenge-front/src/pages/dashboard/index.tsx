@@ -1,6 +1,6 @@
-import privateApi from "@/shared/api/axios";
-import { Button } from "@/shared/ui/Button";
-import { Input } from "@/shared/ui/Input";
+import privateApi from "@shared/api/axios";
+import { Button } from "@shared/ui/Button";
+import { Input } from "@shared/ui/Input";
 import { useEffect } from "react";
 import { Link } from "react-router";
 

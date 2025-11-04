@@ -1,13 +1,13 @@
-import { Button } from "@/shared/ui/Button";
-import { Input } from "@/shared/ui/Input";
-import { Label } from "@/shared/ui/Label";
+import { Button } from "@shared/ui/Button";
+import { Input } from "@shared/ui/Input";
+import { Label } from "@shared/ui/Label";
 import { useForm } from "react-hook-form";
 import type { LoginCredentials } from "../model/types";
-import { useAuthMutation } from "../model/useAuthMutation";
+import { useLoginMutation } from "../model/useLoginMutation";
 
 export const LoginForm = () => {
   const { register, handleSubmit } = useForm<LoginCredentials>();
-  const { login } = useAuthMutation();
+  const { login } = useLoginMutation();
 
   const onSubmit = (data: LoginCredentials) => {
     login.mutate(data);
