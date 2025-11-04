@@ -3,7 +3,7 @@ import { Navbar } from "@shared/ui/Navbar";
 import { Separator } from "@shared/ui/Separator";
 import { Outlet } from "react-router";
 
-export default function MainLayout() {
+export const MainLayout = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar>
@@ -41,4 +41,4 @@ export default function MainLayout() {
       </main>
     </div>
   );
-}
+};
