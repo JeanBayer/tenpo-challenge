@@ -48,7 +48,11 @@ export const VirtualizedList = ({
   );
 
   return (
-    <div ref={scrollRef} className={cn("w-full overflow-auto", className)}>
+    <div
+      ref={scrollRef}
+      className={cn("w-full overflow-auto scrollbar-hide", className)}
+      style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}
+    >
       <div
         className={cn("relative w-full", innerClassName)}
         style={{ height: totalHeight }}

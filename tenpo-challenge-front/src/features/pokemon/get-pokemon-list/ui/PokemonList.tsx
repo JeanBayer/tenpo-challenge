@@ -10,10 +10,11 @@ export const PokemonList = ({ pokemonList }: PokemonListProps) => {
   return (
     <VirtualizedList
       count={pokemonList?.length}
-      estimateSize={114}
+      estimateSize={180}
       overscan={6}
-      className="h-[500px] w-full"
-      rowClassName="max-w-3xs bg-white"
+      className="h-[60vh] w-full max-h-[610px] scroll-smooth px-2 sm:px-4"
+      innerClassName="mx-auto w-full"
+      rowClassName="flex w-full justify-center py-4"
       getItemKey={(index) => pokemonList?.[index]?.id ?? index}
     >
       {(index) => {
