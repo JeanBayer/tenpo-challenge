@@ -1,5 +1,5 @@
-import type { Pokemon } from "@/entities/pokemon/model/types";
-import { Card } from "@/shared/ui/Card";
+import type { Pokemon } from "@entities/pokemon/model/types";
+import { Card } from "@shared/ui/Card";
 import { getTypeConfig } from "../lib/pokemon-type-config";
 import { PokemonImage } from "./PokemonImage";
 import { PokemonName } from "./PokemonName";
