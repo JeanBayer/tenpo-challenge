@@ -13,7 +13,7 @@ export const MainLayout = () => {
           </Navbar.Brand>
 
           <Navbar.Content>
-            <Navbar.Link href="/">Inicio</Navbar.Link>
+            <Navbar.Link href="/">Home</Navbar.Link>
             <Navbar.Link href="/">Pokémon</Navbar.Link>
 
             <div className="ml-auto flex items-center gap-2">
@@ -25,7 +25,7 @@ export const MainLayout = () => {
         </Navbar.Container>
 
         <Navbar.MobileMenu>
-          <Navbar.Link href="/">Inicio</Navbar.Link>
+          <Navbar.Link href="/">Home</Navbar.Link>
           <Navbar.Link href="/">Pokémon</Navbar.Link>
 
           <Separator />
