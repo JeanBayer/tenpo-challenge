@@ -1,3 +1,4 @@
+import { Button } from "@/shared/ui/Button";
 import { usePokemonList } from "@features/pokemon/get-pokemon-list/model/usePokemonList";
 import { PokemonList } from "@features/pokemon/get-pokemon-list/ui/PokemonList";
 
@@ -48,8 +49,21 @@ export default function DashboardPage() {
           </p>
         </header>
 
+        <section>
+          {pokemon.hasNextPage && (
+            <div className="mb-4 text-center">
+              <Button
+                onClick={() => pokemon.fetchNextPage()}
+                disabled={pokemon.isFetchingNextPage}
+              >
+                {pokemon.isFetching ? "Loading more..." : "Load More Pokémon"}
+              </Button>
+            </div>
+          )}
+        </section>
+
         <section className="flex-1 bg-white/70 p-4 shadow-xl ring-1 ring-slate-200/70 backdrop-blur">
-          <PokemonList pokemonList={pokemon.data?.data} />
+          <PokemonList pokemonList={pokemon.data} />
           <div className="border-t border-slate-200">
             <p className="mt-6 text-center text-xs text-slate-500">
               Data provided by{" "}
