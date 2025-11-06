@@ -16,7 +16,7 @@ export default function DashboardPage() {
     );
   }
 
-  if (!pokemon.data) {
+  if (!pokemon.data.length) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-sky-100 via-white to-amber-100">
         <div className="max-w-sm rounded-3xl bg-white/80 px-6 py-8 text-center shadow-lg backdrop-blur">
