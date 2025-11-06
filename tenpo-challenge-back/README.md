@@ -78,7 +78,7 @@ Crea un archivo `.env` en la raíz del proyecto (`tenpo-challenge-back/`) con la
 PORT=3000
 
 # Conexión a la base de datos (para desarrollo local sin Docker)
-DATABASE_URL="postgresql://postgres:123456@localhost:5432/tenpo?schema=public"
+DATABASE_URL=postgresql://postgres:123456@127.0.0.1:5432/tenpo?schema=public
 
 # Secret para JWT (cambia esto por un valor seguro en producción)
 JWT_SECRET=tu_secret_super_seguro_aqui_cambialo
