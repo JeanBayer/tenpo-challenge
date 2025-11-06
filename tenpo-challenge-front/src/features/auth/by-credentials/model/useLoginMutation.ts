@@ -27,6 +27,7 @@ export const useLoginMutation = () => {
       isError: loginMutation.isError,
       isSuccess: loginMutation.isSuccess,
       error: loginMutation.error,
+      data: loginMutation.data,
     },
   };
 };
