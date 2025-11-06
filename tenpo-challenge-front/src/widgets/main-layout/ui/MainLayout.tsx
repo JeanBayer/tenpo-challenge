@@ -1,6 +1,6 @@
 import { LogoutButton } from "@features/auth/logout/ui/LogoutButton";
-import { Navbar } from "@shared/ui/Navbar";
 import { Separator } from "@shared/ui/Separator";
+import { Navbar } from "@widgets/navbar/Navbar";
 import { Outlet } from "react-router";
 
 export const MainLayout = () => {

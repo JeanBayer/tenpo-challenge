@@ -1,7 +1,7 @@
+import { cn } from "@shared/lib/cn";
+import { Button } from "@shared/ui/Button";
 import { type ReactNode } from "react";
 import { Link } from "react-router";
-import { cn } from "../util/style-util";
-import { Button } from "./Button";
 import { useNavbarStore } from "./model/navbar.store";
 
 interface NavbarProps {

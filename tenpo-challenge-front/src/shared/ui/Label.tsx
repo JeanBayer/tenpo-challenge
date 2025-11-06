@@ -1,4 +1,4 @@
-import { cn } from "../util/style-util";
+import { cn } from "../lib/cn";
 
 type LabelProps = React.ComponentProps<"label"> & {};
 

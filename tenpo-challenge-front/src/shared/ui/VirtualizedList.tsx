@@ -1,19 +1,20 @@
 "use no memo";
 
-import { useVirtualizer } from "@tanstack/react-virtual";
-import type { Key, ReactNode } from "react";
-import { useCallback, useRef } from "react";
-import { cn } from "../util/style-util";
+import { useVirtualizer, type VirtualItem } from "@tanstack/react-virtual";
+import { useCallback, useRef, type Key, type ReactNode } from "react";
+import { cn } from "../lib/cn";
 
-type VirtualizedListProps = {
+export type VirtualizedListProps = {
   count: number;
   estimateSize: number;
   overscan?: number;
   className?: string;
   innerClassName?: string;
   rowClassName?: string;
+  footer?: ReactNode;
   getItemKey?: (index: number) => Key;
   children: (index: number) => ReactNode;
+  onRangeChange?: (items: VirtualItem[]) => void;
 };
 
 export const VirtualizedList = ({
@@ -25,6 +26,7 @@ export const VirtualizedList = ({
   rowClassName,
   getItemKey,
   children,
+  footer,
 }: VirtualizedListProps) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -35,17 +37,15 @@ export const VirtualizedList = ({
     overscan,
   });
 
-  const virtualItems = virtualizer.getVirtualItems();
-  const totalHeight = virtualizer.getTotalSize();
-
   const measureElement = useCallback(
     (node: HTMLDivElement | null) => {
-      if (node) {
-        virtualizer.measureElement(node);
-      }
+      if (node) virtualizer.measureElement(node);
     },
     [virtualizer]
   );
+
+  const virtualItems = virtualizer.getVirtualItems();
+  const totalHeight = virtualizer.getTotalSize();
 
   return (
     <div
@@ -80,6 +80,7 @@ export const VirtualizedList = ({
           );
         })}
       </div>
+      {footer}
     </div>
   );
 };

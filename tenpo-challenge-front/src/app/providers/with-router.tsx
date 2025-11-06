@@ -1,6 +1,6 @@
-import { MainLayout } from "@pages/layout/MainLayout";
-import { ProtectedRoute } from "@pages/layout/ProtectedRoute";
-import { PublicRoute } from "@pages/layout/PublicRoute";
+import { ProtectedRoute } from "@processes/auth/session-guard/ui/ProtectedRoute";
+import { PublicRoute } from "@processes/auth/session-guard/ui/PublicRoute";
+import { MainLayout } from "@widgets/main-layout/ui/MainLayout";
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 

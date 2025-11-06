@@ -1,4 +1,4 @@
-import { useAuthInitializer } from "@/features/auth/check-session/model/useAuthInitializer";
+import { useAuthInitializer } from "@processes/auth/session-init/model/useAuthInitializer";
 import { WithProviders } from "./providers";
 import "./styles/index.css";
 
