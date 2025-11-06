@@ -142,16 +142,24 @@ cd tenpo-challenge-back
 # Instalar dependencias
 npm install
 
-# Crear archivo .env (ver tenpo-challenge-back/README.md)
+# Crear archivo .env (ver tenpo-challenge-back/README.md para más detalles)
 cp .env.example .env
+# Edita el archivo .env y configura las variables necesarias
 
-# Levantar con Docker (incluye PostgreSQL)
-docker-compose up --build
+# Iniciar desarrollo (levanta PostgreSQL, ejecuta migraciones y genera Prisma client)
+npm run start:dev
 ```
 
 El backend estará en: **http://localhost:3000**
 
-### Paso 3: Configurar Frontend
+### Paso 3: Cargar datos iniciales (solo la primera vez)
+
+```bash
+# En otra terminal, cargar el seed (usuarios + pokémon)
+curl -X POST http://localhost:3000/api/seed
+```
+
+### Paso 4: Configurar Frontend
 
 ```bash
 cd ../tenpo-challenge-front
@@ -167,13 +175,6 @@ npm run dev
 ```
 
 El frontend estará en: **http://localhost:5173**
-
-### Paso 4: Cargar datos iniciales
-
-```bash
-# En otra terminal, cargar el seed (usuarios + pokémon)
-curl -X POST http://localhost:3000/api/seed
-```
 
 ### Paso 5: Iniciar sesión
 

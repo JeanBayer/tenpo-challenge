@@ -105,66 +105,54 @@ El proyecto ya incluye la configuración de Docker. El archivo `docker-compose.y
 
 ## 🚀 Ejecución del Proyecto
 
-### Opción 1: Con Docker (Recomendado)
+### Desarrollo (Recomendado)
 
 #### Primera vez:
 
 ```bash
-docker-compose up --build
+# 1. Inicia la aplicación (levanta PostgreSQL, ejecuta migraciones y genera Prisma client automáticamente)
+npm run start:dev
+
+# 2. En otra terminal, carga los datos iniciales (solo la primera vez)
+curl -X POST http://localhost:3000/api/seed
 ```
-
-Esto hará:
-
-1. ✅ Construir las imágenes de Docker
-2. ✅ Levantar PostgreSQL
-3. ✅ Esperar a que la BD esté lista
-4. ✅ Generar el cliente de Prisma
-5. ✅ Ejecutar las migraciones
-6. ✅ Iniciar la aplicación en modo desarrollo
 
 #### Ejecuciones posteriores:
 
 ```bash
-docker-compose up
+npm run start:dev
 ```
+
+El script `start:dev` se encarga automáticamente de:
+
+1. ✅ Levantar PostgreSQL con Docker
+2. ✅ Generar el cliente de Prisma
+3. ✅ Ejecutar las migraciones
+4. ✅ Iniciar la aplicación en modo desarrollo con hot-reload
 
 La aplicación estará disponible en: **http://localhost:3000**
 
-#### Detener los contenedores:
+#### Detener la aplicación:
+
+Presiona `Ctrl + C` en la terminal y luego ejecuta:
 
 ```bash
 docker-compose down
 ```
 
-### Opción 2: Desarrollo Local (sin Docker)
+### Opción alternativa: Con Docker Compose
 
-Si prefieres ejecutar la aplicación sin Docker:
-
-#### 1. Levantar PostgreSQL con Docker:
+Si prefieres levantar todo con Docker:
 
 ```bash
-docker-compose up tenpo-db -d
+# Primera vez
+docker-compose up --build
+
+# Ejecuciones posteriores
+docker-compose up
 ```
 
-#### 2. Generar Prisma Client y ejecutar migraciones:
-
-```bash
-npm run generate
-npm run migrate
-```
-
-#### 3. Ejecutar seed (opcional - carga datos iniciales):
-
-```bash
-# Hacer una petición POST al endpoint de seed
-curl -X POST http://localhost:3000/api/seed
-```
-
-#### 4. Iniciar el servidor en modo desarrollo:
-
-```bash
-npm run start:dev
-```
+> **📌 Nota**: Con esta opción también necesitas ejecutar el seed la primera vez usando `curl -X POST http://localhost:3000/api/seed`
 
 ## 📜 Scripts Disponibles
 
