@@ -1,5 +1,5 @@
 import type { Pokemon } from "@entities/pokemon/model/types";
-import privateApi from "@shared/api/axios";
+import { privateApi } from "@entities/user/api/private-api";
 import type { PaginatedResponse } from "@shared/types/pagination";
 
 type FetchPokemonParams = {
